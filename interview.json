@@ -1,0 +1,54 @@
+{
+    "AWSTemplateFormatVersion":"2010-09-09",
+    "Description":"interview purpose practice",
+    "Parameters":
+    {
+        "imageid": {
+            "Description": "image id for ami",
+            "Type": "String",
+            "Default": "ami-6871a115"
+        },
+        "machinetype": {
+            "Description": "mention type of instances",
+            "Type": "String",
+            "Default": "t2.micro"
+        },
+        "securitygroup": {
+            "Description": "defaullt security group",
+            "Type": "String",
+            "Default": "sg-f9b03eb0"
+        }
+        },
+        "Resources":
+        {
+            
+            "launch instances": {
+                "Type": "AWS::EC2::Instance",
+                "Properties": {
+                    "KeyName": "mykey",    
+                    "ImageId":  
+                    { "Ref": "imageid" },
+                    "InstanceType": 
+                     { "Ref": "machinetype" },
+                    "Monitoring": "true",
+                    "SecurityGroupIds" : [
+                        { "Ref": "securitygroup" } 
+                    ],
+                    "UserData": {
+                        "Fn::Base64": {
+                            "Fn::Join": [
+                                "",
+                                [
+                                    "#!/bin/bash -ex",
+                                    "sudo yum update -y"
+                                ]
+                            ]
+                        }
+                    }
+            }
+                    }
+        }
+        
+
+        
+    }

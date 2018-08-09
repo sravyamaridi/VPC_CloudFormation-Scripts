@@ -1,0 +1,71 @@
+{
+    "AWSTemplateFormatVersion":"2010-09-09",
+    "Description":"Learning Cloudformation and creating  myec2",
+    "Resources" :
+    {
+        
+        "Myec2instance": {
+            "Type": "AWS::EC2::Instance",
+            "Properties": {
+                "KeyName": "oregon",
+                "ImageId": "ami-223f945a" ,
+                "InstanceType": "t2.micro",
+                "Monitoring": "true",
+                "SecurityGroupIds" : ["sg-74116d08"]
+
+        }
+                },
+                
+                "Myec2instances2": {
+                    "Type": "AWS::EC2::Instance",
+                    "Properties": {
+                        "KeyName": "oregon",
+                        "ImageId":  "ami-8f78c2f7" ,
+                        "InstanceType": "t2.micro",
+                        "Monitoring": "true",
+                        "SecurityGroupIds" : ["sg-74116d08"],
+                        "UserData": {
+                            "Fn::Base64": {
+                                "Fn::Join": [
+                                    "",
+                                    [
+                                        "#!/bin/bash -ex",
+                                        "sudo yum install apache2 -y"
+                                    ]
+                                ]
+                            }
+                        }
+                }
+                        },
+                        "myec2thridinstances": {
+                            "Type": "AWS::EC2::Instance",
+                            "Properties": {
+                                "KeyName": 
+                                "oregon",
+                                "ImageId":  "ami-f2d3638a" ,
+                                "InstanceType": "t2.micro",
+                                "Monitoring": "true",
+                                "SecurityGroupIds" : ["sg-74116d08"],
+                                "Tags": [
+                                    {
+                                        "Key": "instances",
+                                        "Value": "AMIRedHat"
+                                    }
+                                ],
+                                "UserData": {
+                                    "Fn::Base64": {
+                                        "Fn::Join": [
+                                            "",
+                                            [
+                                                "#!/bin/bash -ex",
+                                                "sudo yum install git -y",
+                                                "sudo yum update -y"
+                                            ]
+                                        ]
+                                    }
+                                }
+                        }
+                                }
+
+}
+}

@@ -1,0 +1,108 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Learning Cloudformation and creating  vpc",
+    "Parameters": {
+        "cidrrange":{
+        "Description": "my reference parameter",
+        "Type": "String",
+        "Default": "10.11.0.0/16"
+    },
+    "mypublicsub": {
+        "Description": "my public subnet",
+        "Type": "String",
+        "Default": "10.11.1.0/24"
+    },
+    
+    "myprivatesub": {
+        "Description": "my private subnet",
+        "Type": "String",
+        "Default": "10.11.2.0/24"
+    }   
+},
+    "Resources": {
+
+    "myvpc": {
+      "Type": "AWS::EC2::VPC",
+      "Properties": {
+        "CidrBlock": { "Ref": "cidrrange" }
+        
+      }
+    },
+
+"igwmy": {
+  "Type": "AWS::EC2::InternetGateway"
+  },
+  "AttachGateway": {
+  "Type": "AWS::EC2::VPCGatewayAttachment",
+  "Properties": {
+    "VpcId": { "Ref": "myvpc" },
+    "InternetGatewayId":  { "Ref": "igwmy" }
+  }
+},
+
+"mypubsub": {
+  "Type": "AWS::EC2::Subnet",
+  "Properties": {
+    "AvailabilityZone": "us-west-2a",
+    "VpcId": { "Ref": "myvpc" },
+    "CidrBlock": { "Ref": "mypublicsub" }
+  }
+},
+
+"myprisub": {
+  "Type": "AWS::EC2::Subnet",
+  "Properties": {
+    "AvailabilityZone": "us-west-2b",
+    "VpcId": { "Ref": "myvpc" },
+    "CidrBlock":{ "Ref": "myprivatesub" } 
+   
+  }
+},
+
+"routeTable": {
+  "Type": "AWS::EC2::RouteTable",
+  "Properties": {
+    "VpcId": { "Ref": "myvpc" }
+  }
+},
+  
+  "myroute": {
+    "Type": "AWS::EC2::Route",
+    "Properties": {
+      "RouteTableId": { "Ref": "routeTable" },
+      "DestinationCidrBlock": "0.0.0.0/0",
+      "GatewayId": { "Ref": "igwmy" }
+    }
+  },
+  
+  "routeTableAssocName": {
+    "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    "Properties": {
+      "SubnetId": { "Ref":"mypubsub"},
+      "RouteTableId":  { "Ref": "routeTable" } 
+    }
+  },
+  
+  "myeip": {
+    "Type": "AWS::EC2::EIP",
+    "Properties": {
+      "Domain": {"Ref":"myvpc"}
+     
+    }
+  }
+  
+  
+  
+  
+  
+}
+
+
+
+
+}
+
+
+
+
+

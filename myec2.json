@@ -1,0 +1,45 @@
+
+            
+{
+    "AWSTemplateFormatVersion":"2010-09-09",
+    "Description":"Learning Cloudformation and creating  myec2",
+    "Parameters":{
+       "imageidformachine":{
+          "Description":"imageidformachine",
+          "Type":"String",
+          "Default":"ami-6bc56f13"
+       },
+       "machinetype":{
+          "Type":"String",
+          "Default":"t2.micro"
+       },
+       "SecurityGroupId":{
+        "Description":"SecurityGroupId for Instance",
+        "Type":"String",
+        "Default":"sg-716fef0e"
+     }
+     
+   },
+    "Resources":{
+       "ec2instances":{
+          "Type":"AWS::EC2::Instance",
+          "Properties":{
+             "KeyName":"oregon",
+             "ImageId":{
+                "Ref":"imageidformachine"
+             },
+             "InstanceType":{
+                "Ref":"machinetype"
+             },
+             "SecurityGroupIds":
+             [
+                 {
+                 "Ref":"SecurityGroupId"
+          }
+        ]
+       }
+    }
+    
+    }
+}
+ 

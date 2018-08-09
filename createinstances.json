@@ -1,0 +1,27 @@
+{
+    "AWSTemplateFormatVersion":"2010-09-09",
+    "Description":"Learning Cloudformation and creating  myec2",
+
+    "Resources" :
+    {
+        
+        "createinstances": {
+            "Type": "AWS::EC2::Instance",
+            "Properties": {
+                "KeyName": "oregon",
+                "ImageId":  "ami-f2d3638a",
+                "InstanceType": "t2.micro",
+                "Monitoring": "true",
+                "SecurityGroupIds" : ["sg-74116d08"],
+                "Tags": [
+                    {
+                        "Key": "instance",
+                        "Value": "redhat"
+                    }
+                ]
+              
+        }
+                }
+
+    }
+}

@@ -1,0 +1,56 @@
+{
+    "AWSTemplateFormatVersion":"2010-09-09",
+    "Description":"RDS creation by cf",
+    "Parameters":{
+          "KeyName":{
+             "Description":"This is a ec2 keypair",
+             "Type":"String",
+             "Default":"oregon"
+          },
+          "ImageId":{
+             "Description":"ImageId for Instance",
+             "Type":"String",
+             "Default":"ami-f2d3638a"
+          },
+          "InstanceType":{
+             "Description":"Instancetype for Instance",
+             "Type":"String",
+             "Default":"t2.micro"
+          },
+          "SecurityGroupId":{
+             "Description":"SecurityGroupId for Instance",
+             "Type":"String",
+             "Default":"sg-53a8022c"
+          }
+        },
+        "Resources":{
+        
+        "-": {
+            "Type": "AWS::EC2::Instance",
+            "Properties": {
+                "KeyName": -,
+                "DisableApiTermination": "-",
+                "ImageId": { - },
+                "InstanceType": "-",
+                "Monitoring": "true|false",
+                "SecurityGroupIds" : [-],
+                "Tags": [
+                    {
+                        "Key": "-",
+                        "Value": "-"
+                    }
+                ],
+                "UserData": {
+                    "Fn::Base64": {
+                        "Fn::Join": [
+                            "",
+                            [
+                                "#!/bin/bash -ex",
+                                "-"
+                            ]
+                        ]
+                    }
+                }
+        }
+                }
+ }

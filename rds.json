@@ -1,0 +1,40 @@
+{
+    "AWSTemplateFormatVersion" : "2010-09-09",
+    "Description" : "Ec2 block device mapping",
+    "Resources" : {
+        "rdsDBInstance": {
+          "Type": "AWS::RDS::DBInstance",
+          "Properties": {
+            "AllocatedStorage": "20",
+            "DBInstanceClass": "t2.micro",
+            "AllowMajorVersionUpgrade": "true",
+            "AutoMinorVersionUpgrade": "true",
+            "AvailabilityZone": "",
+            "BackupRetentionPeriod": "7",
+            "CharacterSetName": "",
+            "DBInstanceIdentifier": "MySql",
+            "DBName": "awscloudmysql",
+            "DBParameterGroupName": "",
+            "DBSecurityGroups": [ "sg-62a8f21d" ],
+            "DBSnapshotIdentifier": "",
+            "DBSubnetGroupName": "",
+            "Engine": "",
+            "EngineVersion": "",
+            "Iops": "",
+            "KmsKeyId": "",
+            "LicenseModel": "",
+            "MasterUsername": "root",
+            "MasterUserPassword": "rootroot",
+            "MultiAZ": "false",
+            "OptionGroupName": "",
+            "Port": "3306",
+            "PreferredBackupWindow": "",
+            "PreferredMaintenanceWindow": "",
+            "PubliclyAccessible": "false",
+            
+            "StorageEncrypted": "false",
+
+          }
+        }
+    }
+}

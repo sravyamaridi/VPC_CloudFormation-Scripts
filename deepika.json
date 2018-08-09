@@ -1,0 +1,29 @@
+{
+    "AWSTemplateFormatVersion":"2010-09-09",
+    "Description":"Learning Cloudformation and creating  myec2",
+    "Resources" :
+{            
+    "Myec2instances2": {
+        "Type": "AWS::EC2::Instance",
+        "Properties": {
+            "KeyName": "ansible",
+            "ImageId":  "ami-6871a115" ,
+            "InstanceType": "t2.micro",
+            "Monitoring": "true",
+            "SecurityGroupIds" : ["sg-06e4ef5a6b052d9f2"],
+            "UserData": {
+                "Fn::Base64": {
+                    "Fn::Join": [
+                        "",
+                        [
+                            "#!/bin/bash -ex",
+                            "sudo yum install apache2 -y"
+                        ]
+                    ]
+                }
+            }
+    }
+}
+}
+}
+

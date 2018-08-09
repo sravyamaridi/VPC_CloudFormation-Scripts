@@ -1,0 +1,31 @@
+{
+    "AWSTemplateFormatVersion":"2010-09-09",
+    "Description":"Learning Cloudformation and creating  myec2",
+     "Resources":{
+        "InstanceSecurityGroup" : {
+            "Type" : "AWS::EC2::SecurityGroup",
+            "Properties" : {
+              "GroupDescription" : "Allow http to client host",
+               "SecurityGroupIngress" : [{
+                  "IpProtocol" : "tcp",
+                  "FromPort" : "80",
+                  "ToPort" : "80",
+                  "CidrIp" : "0.0.0.0/0"
+               },
+               {
+                "IpProtocol" : "TCP",
+                "FromPort" : "0",
+                "ToPort" : "65535",
+                "CidrIp" : "0.0.0.0/0"
+                },
+               {
+                "IpProtocol" : "TCP",
+                "FromPort" : "22",
+                "ToPort" : "22",
+                "CidrIp" : "0.0.0.0/0"
+                }]
+             
+            }
+        }
+    }
+}

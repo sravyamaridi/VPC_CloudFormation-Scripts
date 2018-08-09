@@ -1,0 +1,15 @@
+{
+    
+    "secGroupName" : {
+      "Type" : "AWS::EC2::SecurityGroup",
+      "Properties" : {
+        "GroupDescription" : "-",
+        "SecurityGroupIngress" : [ 
+          --insert rules--
+        ],
+        "VpcId" : ref-to-vpc,
+        "Tags" :  [ insert tag ]
+      }
+    }
+    
+}

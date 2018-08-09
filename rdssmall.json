@@ -1,0 +1,18 @@
+{
+    "AWSTemplateFormatVersion" : "2010-09-09",
+    "Description" : "Ec2 block device mapping",
+    "Resources" : {
+        "MyDB" : {
+         "Type" : "AWS::RDS::DBInstance",
+        "Properties" : {
+        "AllocatedStorage" : "20",
+        "DBInstanceClass" : "db.m1.small",
+        "Engine" : "MySQL",
+        "EngineVersion" : "5.5",
+        "Iops" : "1000",
+        "MasterUsername" : "DBUser" ,
+        "MasterUserPassword" :  "DBPassword" 
+    }
+ }        
+}
+}

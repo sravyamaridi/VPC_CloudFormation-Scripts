@@ -1,0 +1,43 @@
+{
+    "AWSTemplateFormatVersion" : "2010-09-09",
+    "Description" : "Ec2 block device mapping",
+    "Resources" : {
+       
+       "launchConfigName": {
+           "Type" : "AWS::AutoScaling::LaunchConfiguration",
+           "Properties" : {
+               "IamInstanceProfile" : "--",
+               "ImageId" : "--",
+               "InstanceType" : "--",
+               "KeyName" : "--",
+               "SecurityGroups" : [ "--" ],
+               "UserData" : {
+                   "Fn::Base64": 
+                       {   "Fn::Join": [
+                               "",
+                               [
+                                   "#!/bin/bash -ex",
+                                   "-"
+                               ]
+                           
+                           ]                 
+                       }
+               }
+           }
+       },
+       
+       "-" : {
+           "Type" : "AWS::AutoScaling::AutoScalingGroup",
+           "Properties" : {
+               "AvailabilityZones" : ["--"],
+               "LaunchConfigurationName" : "--",
+               "MaxSize" : "--",
+               "MinSize" : "--",
+               "Tags" : [ {"Key" : "Name",
+                           "Value" : ""--"",
+                           "PropagateAtLaunch" : "True"} 
+                       ]
+           }
+       }
+       
+       

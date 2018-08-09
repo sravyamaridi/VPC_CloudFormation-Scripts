@@ -1,0 +1,21 @@
+{
+    "AWSTemplateFormatVersion":"2010-09-09",
+    "Description":"Learning Cloudformation and creating  myec2",
+     "Resources":{
+         
+         "MYEctwoinstance": {
+             "Type": "AWS::EC2::Instance",
+             "Properties": {
+                 "KeyName": "oregon",
+                 "ImageId":  "ami-79873901" ,
+                 "InstanceType": "t2.micro",
+                 "Monitoring": "true",
+                 "SecurityGroupIds" :["sg-716fef0e"]
+                
+                }
+        }
+                }
+                
+               
+                
+    }

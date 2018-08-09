@@ -1,0 +1,9 @@
+{
+    "AWSTemplateFormatVersion":"2010-09-09",
+    "Description":"Learning Cloudformation and creating  myec2",
+    "Resources"
+    {
+        "Taskdefination"{
+            
+        }
+    }

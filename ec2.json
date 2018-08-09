@@ -1,0 +1,38 @@
+{
+    "AWSTemplateFormatVersion" : "2010-09-09",
+    "Description" : "Ec2 block device mapping",
+    "Parameters": {
+        
+        "myec2" : {
+          "Type" : "AWS::EC2::SecurityGroup",
+          "Properties" : {
+            "GroupDescription" : "connecting group",
+            "SecurityGroupIngress" : {
+                "IpProtocol" : "TCP",
+                "FromPort" : "8080",
+                "ToPort" : "8080"
+            
+          }
+        }
+        
+    }
+},
+    "Resources" : {
+        
+        "myec2": {
+            "Type": "AWS::EC2::Instance",
+            "Properties": {
+                "KeyName": "myec2" ,
+                "ImageId": "ami-32cf7b4a",
+                "InstanceType": "t2.micro",
+                "SecurityGroupIds" : 
+                { "Ref": "mygroup" }
+                }      
+               
+        }
+                }
+            }
+        
+        
+       
+      
